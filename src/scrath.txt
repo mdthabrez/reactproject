@@ -1,0 +1,102 @@
+<Container fluid className="loginPage">
+      <Row className="h-100">
+        <Col xs={3} className="py-4 primary-color"></Col>
+        <Col xs={9} className="d-flex align-items-center justify-content-center">
+          <div>
+          <h1 className="pb-3 mb-4 border-bottom pl-2 pr-2" style={{borderBottomWidth: '10px'}}>
+            <span style={{marginLeft: '45px'}}>Office</span> <span >Web Portal</span>
+          </h1>
+
+            <Form style={{ minWidth: '500px' }}>
+              
+              <FormGroup>
+                <FormLabel htmlFor="username">Username</FormLabel>
+                <FormControl type="text" id="username" placeholder="Enter your username" />
+              </FormGroup>
+              <FormGroup>
+                <FormLabel htmlFor="password">Password</FormLabel>
+                <FormControl type="password" id="password" placeholder="Enter your password" />
+              </FormGroup>
+              <FormGroup style={{ textAlign: 'center' }}>
+                <Row>
+                  <Col xs={6}>
+                    <FormGroup>
+                      {/* <Captcha
+                        onChange={(status) => setCaptchaSuccess(status)}
+                      /> */}
+                    </FormGroup>
+                  </Col>
+                </Row>
+                <Button disabled={!captchaSuccess} variant="primary" type="submit" className="btn-login">
+                  Login
+                </Button>
+              </FormGroup>
+            </Form>
+          </div>
+        </Col>
+      </Row>
+    </Container>
+
+    app.post("/", (req, res) => {
+  try {
+    console.log("post working")
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+  
+});
+
+const test = async(req,res) =>{
+  const admin = {
+    admin_id: req.body.admin_id,
+    admin_email: req.body.admin_email,
+    admin_pwd: req.body.admin_pwd
+  };
+
+    await Admin.Admin.create(admin);
+
+    return res.status(200).send({message:"test working "});
+
+}
+
+
+app.post("/createadmin2",  test);
+
+exports.Login = async (req, res) => {
+    const  email = req.body.user_email;
+    const password = req.body.password;
+    console.log(req.body);
+    try {
+        
+      const user = await Users.findOne({ where: { user_email:email } });
+      console.log(user);
+      if (!user) {
+        throw new Error('Invalid login credentials');
+      }
+      console.log(user.password);
+      const isPasswordValid = await bcrypt.compare(password, user.password);
+      if (!isPasswordValid) {
+        throw new Error('Invalid login credentials password');
+      }
+      const token = jwt.sign({ userId: user.id }, 'your_secret_key');
+      res.json({ user, token });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
+
+// module.exports = app => {
+//     const signup = require("../controllers/");
+//     const login = require("../controllers/auth/login.controller");
+
+//     var router = require("express").Router();
+  
+//     // Create a new Tutorial
+//     router.post("/create-user", users.create);
+
+//     router.post("/login", login.Login);
+
+//     app.use('/', router);
+
+// };

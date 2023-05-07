@@ -1,0 +1,56 @@
+html, body, #root { /* set height of html, body, and root to 100% */
+    height: 100%;
+  }
+  
+  .OfficeWebPortal .h-100 { /* add margin and padding to Container with 100% height */
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Add position relative to the heading */
+h1 {
+  position: relative;
+}
+
+/* Add a pseudo-element after the heading */
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: -5px; /* adjust the position of the rectangle */
+  left: 0;
+  width: 50px; /* adjust the width of the rectangle */
+  height: 10px; /* adjust the height of the rectangle */
+  background-color: #035b70; /* adjust the color of the rectangle */
+/* set the z-index to be behind the text */
+  margin-left: 45px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+h1 span:first-child {
+  color: #035b70;
+}
+
+/* Set the color of "Web Portal" to grey */
+h1 span:last-child {
+  color: grey;
+}
+
+.btn-login {
+  background-color: #013c4b !important;
+  color: #fff;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.btn-login:hover {
+  background-color: #013848 !important;
+}
+
+

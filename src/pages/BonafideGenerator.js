@@ -3,6 +3,8 @@ import React, { useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
+import Navbar from '../components/Navbar';
+
 
 function BonafideGenerator() {
   const formRef = useRef();
@@ -75,7 +77,7 @@ function BonafideGenerator() {
   return (
     <div>
   
-
+<Navbar />
     
 <div className="container mt-5">
   <div className="row justify-content-center">

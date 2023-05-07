@@ -1,5 +1,7 @@
 import React, { useState ,useRef} from 'react';
 import '../App.css';
+import Navbar from '../components/Navbar';
+
 
 export default function CircularUpload() {
   const [pdfList, setPdfList] = useState([]);
@@ -63,6 +65,8 @@ export default function CircularUpload() {
 
   return (
     <div>
+      
+      <Navbar />
       <div>
         <label htmlFor="pdf-input">Select PDF Folder:</label>
         <input
