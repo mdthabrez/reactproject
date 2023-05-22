@@ -1,39 +1,37 @@
-const {sequelize} = require("../config/dbconnection");
-const DataTypes = require("sequelize");
-
-const Users = sequelize.define('users', {
+module.exports = (sequelize, Sequelize) => {
+  const User = sequelize.define("users", {
     id: {
       autoIncrement: true,
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       primaryKey: true
     },
     user_email: {
-      type: DataTypes.STRING(20),
+      type: Sequelize.STRING(20),
       allowNull: false
     },
     password: {
-      type: DataTypes.STRING,
+      type: Sequelize.STRING,
       allowNull: false
     },
     username: {
-      type: DataTypes.STRING(25),
+      type: Sequelize.STRING(25),
       allowNull: false
     },
     staff_id: {
-      type: DataTypes.STRING(10),
+      type: Sequelize.STRING(10),
       allowNull: false
     },
     ph_no: {
-      type: DataTypes.STRING(10),
+      type: Sequelize.STRING(10),
       allowNull: false
     },
     profile_picture: {
-      type: DataTypes.BLOB,
+      type: Sequelize.BLOB,
       allowNull: false
     },
     d_id: {
-      type: DataTypes.INTEGER,
+      type: Sequelize.INTEGER,
       allowNull: false,
       references: {
         model: 'designation',
@@ -56,8 +54,7 @@ const Users = sequelize.define('users', {
     ]
   });
 
-  Users.sync().then(() => {
-      console.log("User Model synced");
-    });
+  return User;
+};
 
-  module.exports={Users};
+
