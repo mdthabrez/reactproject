@@ -6,7 +6,7 @@ const app = express();
 const Admin = require("./models/admin");
 const router = express.Router();
 var corsOptions = {
-  origin: "http://localhost:8081"
+  origin: "http://localhost:3000"
 };
 
 app.use(cors(corsOptions));

@@ -9,11 +9,14 @@ import {
   Link
 } from "react-router-dom";
 
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import BonafideGenerator from './pages/BonafideGenerator';
-import CircularUpload from './pages/CircularUpload';
+
+
+import Login from "./frontend/pages/Login";
+import Home from "./frontend/pages/Home";
+import About from "./frontend/pages/About";
+import BonafideGenerator from './frontend/pages/BonafideGenerator';
+import CircularUpload from './frontend/pages/CircularUpload';
+import LoginPage from './frontend/pages/LoginPage';
 
 function App() {
   return (
@@ -21,7 +24,9 @@ function App() {
       
     
       <Routes>
-      <Route path='/' element={<Home/>} />
+        <Route path='/' element={<LoginPage/>}></Route>
+      <Route path='/Home' element={<Home/>} />
+      <Route path='/loginPage' element={<LoginPage/>} />
         <Route path='/login' element={<Login/>} />
         <Route path='/about' element={<About/>} />
         <Route path='/bonafide-generator' element={<BonafideGenerator/>} />
