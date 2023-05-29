@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,16 +6,53 @@ import {
   Link
 } from "react-router-dom";
 
+import UserService from "../services/user.service"; 
+import AuthService from "../services/auth.service";
+
+
 export default function Navbar() {
+
+  
+  const [name,setName] = useState("");
+  const [designation,setDesig] = useState("");
+  const [val,setVal] = useState("");
+
+  const [content, setContent] = useState("");
+  const currentUser = AuthService.getCurrentUser();
+  const us=JSON.parse(localStorage.getItem("user"));
+  console.log(us.username);
+
+  useEffect(() => {
+    UserService.getUserBoard().then(
+      (response) => {
+        console.log(response.data);
+        const { username, designation } = response.data;
+        setName(username);
+        setDesig(designation.d_name);
+        setContent(response.data);
+      },
+      (error) => {
+        const _content =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
+          
+        setContent(_content);
+      }
+    );
+  }, []);
+
   return (
     <nav className="navbar p-0 mb-3">
     <div class="container-fluid py-2 primary-color">
       <Link class="navbar-brand white-color " to="/">mydist</Link>
       
       <span class="navbar-text white-color me-3 " >
-        Welcome Ms. Hamsa Rakha
+        Welcome {name}
         <br></br> 
-      <span>Superintendent</span>
+      <span>{designation}</span>
       </span>
       
     
