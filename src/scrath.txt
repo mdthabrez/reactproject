@@ -168,3 +168,80 @@ exports.Login = async (req, res) => {
           </div>
         </div>
       </div>
+
+      const db = require("./models");
+const Role = db.role;
+
+function initial() {
+  Role.create({
+    id: 1,
+    name: "user"
+  });
+ 
+  Role.create({
+    id: 2,
+    name: "moderator"
+  });
+ 
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+}
+
+function initial() {
+  Role.create({
+    id: 1,
+    name: "user"
+  });
+ 
+  Role.create({
+    id: 2,
+    name: "moderator"
+  });
+ 
+  Role.create({
+    id: 3,
+    name: "admin"
+  });
+
+  desig.create({
+    d_id:1,
+    d_name:"Superintendent"
+  })
+}
+
+
+try {
+  Bonafide.create({
+    student_name: studentName,
+    student_regis: studentRegis,
+    student_dept: studentDept,
+    student_branch: studentBranch,
+    student_year: studentYear,
+    date_of_issue: dateOfIssue,
+    purpose :purpose,
+    pdf_data: pdf_data,
+    pdf_name: pdf_name,
+  })
+} catch (error) {
+  console.error('Error:', error);
+  res.status(500).json({ message: 'Internal server error' });
+}
+     
+  // Send the PDF as a response
+  res.setHeader('Content-Type', 'application/pdf');
+  res.setHeader('Content-Disposition', 'attachment; filename=output.pdf');
+  res.send(pdfBuffer);
+
+}
+ const response = BonafideService.addBonafide(JSON.stringify(formData));
+      console.log("response",response);
+        let res = "";
+      response.then((result) => {
+        // Access the result of the fulfilled promise
+        res=result;
+        console.log(result);
+      });
+
+      

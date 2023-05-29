@@ -28,7 +28,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     pdf_data: {
-      type: DataTypes.BLOB,
+      type: DataTypes.TEXT,
       allowNull: true
     }
   }, {

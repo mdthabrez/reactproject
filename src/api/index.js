@@ -6,7 +6,7 @@ const app = express();
 const Admin = require("./models/admin");
 const router = express.Router();
 var corsOptions = {
-  origin: "http://localhost:3000"
+  origin: "http://localhost:3000",
 };
 
 app.use(cors(corsOptions));
@@ -22,10 +22,16 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to bezkoder application." });
 });
 
+const fs = require('fs');
+const handlebars = require('handlebars');
+const path = require('path');
+const puppeteer = require('puppeteer');
 
 require("./routes/admin")(app);
 require("./routes/user.routes")(app);
 require("./routes/auth.routes")(app);
+require("./routes/bonafide.routes")(app);
+require("./routes/circular.routes")(app);
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
@@ -34,23 +40,9 @@ app.listen(PORT, () => {
 
 const db = require("./models");
 const Role = db.role;
+const desig = db.designation;
 
-function initial() {
-  Role.create({
-    id: 1,
-    name: "user"
-  });
- 
-  Role.create({
-    id: 2,
-    name: "moderator"
-  });
- 
-  Role.create({
-    id: 3,
-    name: "admin"
-  });
-}
+
 
 db.sequelize.sync().then(() => {
   console.log('Drop and Resync Db');

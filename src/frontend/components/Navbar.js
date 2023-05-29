@@ -33,7 +33,7 @@ export default function Navbar() {
           <li class="nav-item">
             
           </li>
-          <li class="nav-item">
+          {/* <li class="nav-item">
             <Link class="nav-link" to="/"  >NAAC </Link>
           </li>
    <li class="nav-item">
@@ -44,12 +44,18 @@ export default function Navbar() {
           </li>
    <li class="nav-item">
             <Link class="nav-link ">Resources</Link>
-          </li>
+          </li> */}
           <li class="nav-item">
             <Link class="nav-link" to="/bonafide-generator">Bonafide Certificate</Link>
           </li>
           <li class="nav-item">
+            <Link class="nav-link" to="/search-bonafide">Search Bonafide Certificate</Link>
+          </li>
+          <li class="nav-item">
           <Link class="nav-link" to="/circular-upload">Circular Upload</Link>
+          </li>
+          <li class="nav-item">
+          <Link class="nav-link" to="/remainders">Remainders</Link>
           </li>
         </ul>
         

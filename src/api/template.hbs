@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PDF Header</title>
+  <style>
+    /* CSS code for the header */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    
+    .header img {
+      height: 100px; /* Set the desired height */
+      margin-right: 10px;
+    }
+    
+    .header-text {
+      text-align: center;
+    }
+    
+    .header-text h2, .header-text p {
+      margin: 0;
+    }
+    
+    .header-line {
+      border-top: 1px solid black;
+      margin-top: 10px;
+    }
+    
+    .header-info {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+    
+    .left-info {
+      text-align: left;
+    }
+    
+    .right-info {
+      text-align: right;
+    }
+    
+    /* CSS code for the Bonafide Certificate section */
+    .bonafide-certificate {
+      text-align: center;
+      margin-top: 20px;
+    }
+    
+    .bonafide-certificate p {
+      margin: 0;
+    }
+    
+    .additional-text {
+      margin-top: 20px;
+      text-align: center;
+    }
+    
+    /* CSS code for the footer */
+    .footer {
+      text-align: right;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <img src="data:image/png;base64,{{image}}" alt="Image" />
+    <div class="header-text">
+      <h2>DEPARTMENT OF INFORMATION SCIENCE AND TECHNOLOGY</h2>
+      <p>COLLEGE OF ENGINEERING, GUINDY</p>
+      <p>ANNA UNIVERSITY, CHENNAI-600 025</p>
+    </div>
+  </div>
+  
+  <div class="header-line"></div>
+  
+  <div class="header-info">
+    <div class="left-info">
+      <p>Dr. S. Sridhar</p>
+      <p>Professor & Head</p>
+    </div>
+    <div class="right-info">
+      <p>DATED: {{date}}</p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <p><b><center><u>BONAFIDE CERTIFICATE</u></center></b></p>
+    
+    <div class="bonafide-certificate">
+      <p>This is to certify {{name}} (Reg No.: {{2020115009}})</p><br>
+      <p> is a bonafide student of {{year}} year of {{branch}} at the</p><br>
+      <p> {{dept}} department, College of Engineering, Guindy Campus, Anna University, Chennai-25.</p>
+      <br><br><br>
+      <p>Purpose of the Bonafide: {{purpose}}</p>
+    </div>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <div class="footer">
+    <p>HEAD OF THE DEPARTMENT</p>
+    <!-- Rest of your content -->
+  </div>
+</body>
+</html>

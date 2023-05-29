@@ -1,55 +1,55 @@
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  return sequelize.define('bonafide', {
-    bonafide_id: {
+  return sequelize.define('users', {
+    id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    student_name: {
-      type: DataTypes.STRING(50),
-      allowNull: true
-    },
-    student_regis: {
-      type: DataTypes.STRING(10),
-      allowNull: true
-    },
-    student_dept: {
+    user_email: {
       type: DataTypes.STRING(20),
       allowNull: true
     },
-    student_branch: {
+    password: {
+      type: DataTypes.TEXT,
+      allowNull: true
+    },
+    username: {
+      type: DataTypes.STRING(25),
+      allowNull: true
+    },
+    staff_id: {
       type: DataTypes.STRING(10),
       allowNull: true
     },
-    student_year: {
-      type: DataTypes.STRING(5),
+    ph_no: {
+      type: DataTypes.STRING(10),
       allowNull: true
     },
-    date_of_issue: {
-      type: DataTypes.DATEONLY,
-      allowNull: true
-    },
-    purpose: {
-      type: DataTypes.STRING(200),
-      allowNull: true
-    },
-    bonafide_pdf: {
+    profile_picture: {
       type: DataTypes.BLOB,
       allowNull: true
+    },
+    d_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'designation',
+        key: 'd_id'
+      }
     }
   }, {
     sequelize,
-    tableName: 'bonafide',
+    tableName: 'users',
     schema: 'public',
     timestamps: false,
     indexes: [
       {
-        name: "bonafide_pkey",
+        name: "users_pkey",
         unique: true,
         fields: [
-          { name: "bonafide_id" },
+          { name: "id" },
         ]
       },
     ]
